@@ -3,7 +3,7 @@ Summary:	Cinnamon screensaver
 Summary(pl.UTF-8):	Wygaszacz ekranu dla środowiska Cinnamon
 Name:		cinnamon-screensaver
 Version:	5.8.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications
 #Source0Download: https://github.com/linuxmint/cinnamon-screensaver/tags
@@ -66,7 +66,7 @@ cd ..
 %{__rm} $RPM_BUILD_ROOT%{_pkgconfigdir}/cscreensaver.pc
 
 # not supported by glibc (as of 2.37)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/zgh
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,mo,nap,rue,sco,zgh}
 
 %find_lang %{name}
 
