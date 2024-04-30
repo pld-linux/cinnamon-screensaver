@@ -1,23 +1,23 @@
-%define	translations_version	5.8.1
+%define	translations_version	6.0.2
 Summary:	Cinnamon screensaver
 Summary(pl.UTF-8):	Wygaszacz ekranu dla środowiska Cinnamon
 Name:		cinnamon-screensaver
-Version:	5.8.0
-Release:	2
+Version:	6.0.3
+Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 #Source0Download: https://github.com/linuxmint/cinnamon-screensaver/tags
 Source0:	https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	68130450b11eb482935f9aba45df7013
+# Source0-md5:	df9a96f2811ea17818ade0bd322671c7
 #Source1Download: https://github.com/linuxmint/cinnamon-translations/tags
 Source1:	https://github.com/linuxmint/cinnamon-translations/archive/%{translations_version}/cinnamon-translations-%{translations_version}.tar.gz
-# Source1-md5:	b9ea707443c81e4340b0cb219d289130
+# Source1-md5:	36552df46587be4e32ac311b8d7084e4
 URL:		https://github.com/linuxmint/cinnamon-screensaver
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	gtk+3-devel >= 3.0
-BuildRequires:	meson >= 0.46.0
+BuildRequires:	meson >= 0.56.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pam-devel
 BuildRequires:	pkgconfig >= 1:0.22
