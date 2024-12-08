@@ -1,17 +1,17 @@
-%define	translations_version	6.2.2
+%define	translations_version	6.4.1
 Summary:	Cinnamon screensaver
 Summary(pl.UTF-8):	Wygaszacz ekranu dla środowiska Cinnamon
 Name:		cinnamon-screensaver
-Version:	6.2.0
+Version:	6.4.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 #Source0Download: https://github.com/linuxmint/cinnamon-screensaver/tags
 Source0:	https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	bf46116600725cb3fafa030de39c803e
+# Source0-md5:	c3ebeff0e60d2bd24f64a1c9bc3d38e4
 #Source1Download: https://github.com/linuxmint/cinnamon-translations/tags
 Source1:	https://github.com/linuxmint/cinnamon-translations/archive/%{translations_version}/cinnamon-translations-%{translations_version}.tar.gz
-# Source1-md5:	ca66b0eadc9416ef66384b3b278554ad
+# Source1-md5:	2d12def6818b100664081e979343d214
 URL:		https://github.com/linuxmint/cinnamon-screensaver
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-tools
@@ -60,10 +60,8 @@ for f in usr/share/locale/*/LC_MESSAGES/%{name}.mo ; do
 done
 cd ..
 
-# no headers
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/libcscreensaver.so
+# no headers / development package
 %{__rm} $RPM_BUILD_ROOT%{_datadir}/gir-1.0/CScreensaver-1.0.gir
-%{__rm} $RPM_BUILD_ROOT%{_pkgconfigdir}/cscreensaver.pc
 
 # not supported by glibc (as of 2.39)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{frp,mo,nap,rue,sco}
@@ -82,11 +80,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/cinnamon-screensaver
 %attr(755,root,root) %{_bindir}/cinnamon-screensaver-command
 %attr(755,root,root) %{_bindir}/cinnamon-unlock-desktop
-%attr(755,root,root) %{_libexecdir}/cinnamon-screensaver-pam-helper
-%attr(755,root,root) %{_libexecdir}/cs-backup-locker
-%attr(755,root,root) %{_libdir}/libcscreensaver.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libcscreensaver.so.0
-%{_libdir}/girepository-1.0/CScreensaver-1.0.typelib
+%dir %{_libexecdir}/cinnamon-screensaver
+%attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/cinnamon-screensaver-pam-helper
+%attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/cs-backup-locker
+%attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/libcscreensaver.so
+%dir %{_libexecdir}/cinnamon-screensaver/girepository-1.0
+%{_libexecdir}/cinnamon-screensaver/girepository-1.0/CScreensaver-1.0.typelib
 %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/cinnamon-screensaver
 %dir %{_datadir}/cinnamon-screensaver
 %attr(755,root,root) %{_datadir}/cinnamon-screensaver/cinnamon-screensaver-command.py
@@ -122,5 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/actions/screensaver-switch-users-symbolic.svg
 %{_iconsdir}/hicolor/scalable/actions/screensaver-unlock-symbolic.svg
 %{_iconsdir}/hicolor/scalable/apps/csr-backup-locker-icon.svg
+%{_iconsdir}/hicolor/scalable/status/cinnamon-screensaver-view-conceal.svg
+%{_iconsdir}/hicolor/scalable/status/cinnamon-screensaver-view-reveal.svg
 %{_iconsdir}/hicolor/scalable/status/screensaver-blank.svg
 %{_iconsdir}/hicolor/scalable/status/screensaver-notification-symbolic.svg
