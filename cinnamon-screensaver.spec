@@ -39,17 +39,17 @@ Wygaszacz ekranu dla środowiska Cinnamon.
 %setup -q -a1
 
 %build
-%meson build \
+%meson \
 	--default-library=shared
 
-%ninja_build -C build
+%meson_build
 
 %{__make} -C cinnamon-translations-%{translations_version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %py3_comp $RPM_BUILD_ROOT%{_datadir}/cinnamon-screensaver
 %py3_ocomp $RPM_BUILD_ROOT%{_datadir}/cinnamon-screensaver
