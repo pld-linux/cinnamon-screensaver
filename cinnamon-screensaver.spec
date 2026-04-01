@@ -1,17 +1,17 @@
-%define	translations_version	6.4.1
+%define	translations_version	6.6.2
 Summary:	Cinnamon screensaver
 Summary(pl.UTF-8):	Wygaszacz ekranu dla środowiska Cinnamon
 Name:		cinnamon-screensaver
-Version:	6.4.0
+Version:	6.6.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications
 #Source0Download: https://github.com/linuxmint/cinnamon-screensaver/tags
 Source0:	https://github.com/linuxmint/cinnamon-screensaver/archive/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	c3ebeff0e60d2bd24f64a1c9bc3d38e4
+# Source0-md5:	fe998059982776003fb66d05b309345c
 #Source1Download: https://github.com/linuxmint/cinnamon-translations/tags
 Source1:	https://github.com/linuxmint/cinnamon-translations/archive/%{translations_version}/cinnamon-translations-%{translations_version}.tar.gz
-# Source1-md5:	2d12def6818b100664081e979343d214
+# Source1-md5:	56b012e29677ac11d2f208caed30c8d6
 URL:		https://github.com/linuxmint/cinnamon-screensaver
 BuildRequires:	dbus-devel
 BuildRequires:	gettext-tools
@@ -83,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/cinnamon-screensaver
 %attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/cinnamon-screensaver-pam-helper
 %attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/cs-backup-locker
-%attr(755,root,root) %{_libexecdir}/cinnamon-screensaver/libcscreensaver.so
+%{_libexecdir}/cinnamon-screensaver/libcscreensaver.so
 %dir %{_libexecdir}/cinnamon-screensaver/girepository-1.0
 %{_libexecdir}/cinnamon-screensaver/girepository-1.0/CScreensaver-1.0.typelib
 %config(noreplace) %verify(not md5 mtime size) /etc/pam.d/cinnamon-screensaver
